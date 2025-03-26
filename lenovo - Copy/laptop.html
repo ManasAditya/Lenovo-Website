@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptops</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-900 text-white">
+
+    <!-- Navigation -->
+    <nav class="bg-black py-4 px-6 fixed top-0 w-full shadow-lg z-50">
+        <div class="flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-red-500">Lenovo</h1>
+            <div>
+                <a href="index.html" class="text-white hover:text-red-500 mx-4 text-lg">Home</a>
+                <a href="laptop.html" class="text-red-500 font-bold mx-4 text-lg">Laptops</a>
+                <a href="about.html" class="text-white hover:text-red-500 mx-4 text-lg">About</a>
+            </div>
+        </div>
+    </nav>
+    <header class="mt-20 text-center py-12 bg-cover bg-center" style="background-image: url('/home-back-new.jpg');">
+        <div class="bg-black bg-opacity-60 py-10 px-6">
+            <h1 class="text-5xl font-bold text-red-500">Available Laptops</h1>
+            <p class="text-gray-300 mt-3 text-lg max-w-3xl mx-auto">
+                Buy to see the new World!!
+        </div>
+    </header>
+    <!-- Laptop Listings -->
+    
+        <div id="laptopList" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <!-- Laptops will be inserted here dynamically -->
+        </div>
+
+    <script>
+        // Laptop Data (15 Records)
+        const laptops = [
+            { name: "Lenovo ThinkPad X1 Carbon", specs: "Intel i7, 16GB RAM, 512GB SSD", price: "$1,599", image: "bck35fhess1td0jtxhbqx1a2s9ofzk318843.webp"},
+            { name: "Lenovo Legion 5 Pro", specs: "AMD Ryzen 7, 16GB RAM, 1TB SSD", price: "$1,799", image: "elsxf6rwrtxudesy107rsj88cg0qhx499173.png.webp" },
+            { name: "Lenovo IdeaPad 3", specs: "Intel i5, 8GB RAM, 256GB SSD", price: "$699", image: "25565228746_IdeaPadSlim3ArcticGreyIMG_202301091224261732122932484.avif" },
+            { name: "Lenovo Yoga 9i", specs: "Intel i7, 16GB RAM, 1TB SSD", price: "$1,999", image: "fnt2tknhm91d57rw4zctdgqzqg2ppn361546.avif" },
+            { name: "Lenovo ThinkBook 14", specs: "Intel i5, 8GB RAM, 512GB SSD", price: "$899", image: "iutq4rio1br7mpt6uk1b8bfzhxyhph475181.avif" },
+            { name: "Lenovo Legion 7", specs: "AMD Ryzen 9, 32GB RAM, 1TB SSD", price: "$2,199", image: "0nbx8c1u616x4viavujp1wgdyaudjx532378.avif" },
+            { name: "Lenovo IdeaPad Gaming 3", specs: "Intel i5, 8GB RAM, 512GB SSD", price: "$899", image: "9czxngypgi91xfmo69l82zsoskkqg6727171.avif" },
+            { name: "Lenovo Chromebook Duet", specs: "MediaTek, 4GB RAM, 128GB eMMC", price: "$299", image: "lenovo-tablet-ideapad-duet5-chromebook-hero.avif" },
+            { name: "Lenovo ThinkPad P1", specs: "Intel i9, 32GB RAM, 1TB SSD", price: "$2,499", image: "d6r8x7747uzsbq39kagkx5f49gtjvc526553.avif" },
+            { name: "Lenovo ThinkPad E15", specs: "Intel i5, 16GB RAM, 512GB SSD", price: "$1,099", image: "qtz2oz83v15whwov7nw7oy8ehox1t4748471.webp" },
+            { name: "Lenovo Yoga Slim 7", specs: "AMD Ryzen 7, 16GB RAM, 512GB SSD", price: "$1,399", image: "oxxui60o5bgq1lli2ipvpbfjgviivq525732.avif" },
+            { name: "Lenovo ThinkPad T14", specs: "Intel i7, 16GB RAM, 512GB SSD", price: "$1,499", image: "jh9vpckgo18047vm8eyasrat65d4z7820888.webp" },
+            { name: "Lenovo IdeaPad 5", specs: "Intel i5, 8GB RAM, 512GB SSD", price: "$799", image: "yobqb59w64qwwr5nwr85m1199wot7m211249.avif" },
+            { name: "Lenovo Legion Slim 5", specs: "AMD Ryzen 7, 16GB RAM, 1TB SSD", price: "$1,699", image: "zuot6r8nr4ltv1mi5ftzjaaeudhfoj218850.webp" },
+            { name: "Lenovo ThinkPad X1 Yoga", specs: "Intel i7, 16GB RAM, 512GB SSD", price: "$1,799", image: "9nw2oi26zcwg3xi0yoic0jt8uuszag851952.avif" },
+            { name: "Lenovo LOQ", specs: "Intel i9, 16GB RAM, 1TB SSD", price: "$2,799", image: "v6ar0y1z7ncjdcy9t4lyfxk8bic612429919.webp" },
+        ];
+
+        // Render Laptops
+        const laptopList = document.getElementById("laptopList");
+        laptops.forEach((laptop, index) => {
+            const laptopCard = `
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg text-center">
+                    <img src="${laptop.image}" alt="${laptop.name}" class="w-40 mx-auto rounded-md shadow-md">
+                    <h2 class="text-xl font-bold mt-2">${laptop.name}</h2>
+                    <p class="text-gray-400">${laptop.specs}</p>
+                    <p class="text-yellow-400 font-semibold text-lg">${laptop.price}</p>
+                    <button onclick="buyNow(${index})" class="mt-4 bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600">
+                        Buy Now
+                    </button>
+                </div>
+            `;
+            laptopList.innerHTML += laptopCard;
+        });
+
+        // Buy Now Function
+        function buyNow(index) {
+            localStorage.setItem("laptopName", laptops[index].name);
+            localStorage.setItem("laptopSpecs", laptops[index].specs);
+            localStorage.setItem("laptopPrice", laptops[index].price);
+            localStorage.setItem("laptopImage", laptops[index].image);
+            window.location.href = "payment.html";
+        }
+    </script>
+
+</body>
+</html>
